@@ -1,216 +1,282 @@
-# TakiciECommerce
+#Takıcı E-Commerce
 
-## 1. Giris
-Gunumuzde internetin yayginlasmasiyla ticaret anlayisi dijital ortama tasinmistir. Bu proje kapsaminda, bir taki isletmesi icin kullanici dostu, guvenli, modern ve islevsel bir e-ticaret web sitesi gelistirilmesi hedeflenmektedir.
+#1. Giriş
+Günümüzde internetin yaygınlaşmasıyla ticaret anlayışı dijital ortama taşınmıştır. Bu proje kapsamında, bir takı işletmesi için kullanıcı dostu, güvenli, modern ve işlevsel bir e-ticaret web sitesi geliştirilmesi hedeflenmektedir.
 
-Hazirlanan web sitesi sayesinde musteriler magazaya gitmeden urunleri inceleyebilecek, sepetlerine ekleyebilecek, siparis verebilecek ve isletme ile kolayca iletisime gecebilecektir.
+Hazırlanan web sitesi sayesinde müşteriler mağazaya gitmeden ürünleri inceleyebilecek, sepetlerine ekleyebilecek, sipariş verebilecek ve işletme ile kolayca iletişime geçebilecektir.
 
-## 2. Proje Tanimi
-Bu proje; kolye, yuzuk, bileklik, kupe ve benzeri taki ile aksesuar urunlerinin internet uzerinden satisini gerceklestirmek amaciyla tasarlanmis bir web uygulamasidir.
+#2. Proje Tanımı
+Bu proje; kolye, yüzük, bileklik, küpe ve benzeri takı ile aksesuar ürünlerinin internet üzerinden satışını gerçekleştirmek amacıyla tasarlanmış bir web uygulamasıdır.
 
-Sistem iki temel bolumden olusmaktadir:
+Sistem iki temel bölümden oluşmaktadır:
 
-- Kullanici (musteri) paneli
-- Yonetici (admin) paneli
+Kullanıcı (Müşteri) paneli
 
-Kullanicilar urunleri goruntuleyip satin alma surecini yonetirken, yoneticiler urun, kategori, siparis ve stok islemlerini kontrol edebilmektedir.
+Yönetici (Admin) paneli
 
-## 3. Projenin Amaci
-Projenin temel amaci; modern, guvenli ve yonetilebilir bir taki e-ticaret platformu olusturarak musteri memnuniyetini artirmak ve isletmenin satis surecini dijital ortama tasimaktir.
+Kullanıcılar ürünleri görüntüleyip satın alma sürecini yönetirken, yöneticiler ürün, kategori, sipariş ve stok işlemlerini kontrol edebilmektedir.
 
-Bu kapsamda hedeflenen baslica kazanımlar sunlardir:
+#3. Projenin Amacı
+Projenin temel amacı; modern, güvenli ve yönetilebilir bir takı e-ticaret platformu oluşturarak müşteri memnuniyetini artırmak ve işletmenin satış sürecini dijital ortama taşımaktır.
 
-- Taki urunlerinin online ortamda satisa sunulmasi
-- Isletmenin satis potansiyelinin artirilmasi
-- Musterilere 7/24 erisilebilir satis imkani saglanmasi
-- Marka bilinirliginin guclendirilmesi
-- Siparis ve stok sureclerinin kolaylastirilmasi
+Bu kapsamda hedeflenen başlıca kazanımlar şunlardır:
 
-## 4. Projenin Kapsami
-Proje asagidaki ana basliklari kapsamaktadir:
+Takı ürünlerinin online ortamda satışa sunulması
 
-- Web sitesi arayuz tasarimi
-- Kullanici kayit ve giris sistemi
-- Urun listeleme ve urun detay sayfalari
-- Sepet ve siparis islemleri
-- Admin paneli olusturulmasi
-- Veritabani tasarimi
-- Guvenlik ve yetkilendirme mekanizmalari
+İşletmenin satış potansiyelinin artırılması
 
-## 5. Hedef Kitle
-Bu web sitesinin hedef kitlesi su sekilde belirlenmistir:
+Müşterilere 7/24 erişilebilir satış imkanı sağlanması
 
-- Taki ve aksesuar kullanmayi seven kadin kullanicilar
-- Erkek aksesuarlariyla ilgilenen kullanicilar
-- Dogum gunu, sevgililer gunu, yil donumu gibi ozel gunler icin hediye arayan kisiler
-- Online alisverisi tercih eden kullanicilar
+Marka bilinirliğinin güçlendirilmesi
 
-## 6. Web Sitesi Genel Ozellikleri
+Sipariş ve stok süreçlerinin kolaylaştırılması
 
-- Mobil, tablet ve masaustu cihazlarla uyumlu tasarim
-- Kullanici dostu arayuz
-- Gorsel agirlikli modern urun sunumu
-- Hizli sayfa gecisleri ve basit menu yapisi
-- Guvenli giris ve yetkilendirme altyapisi
-- Urun listeleme, kategori bazli gezinti ve detay sayfalari
+#4. Projenin Kapsamı
+Proje aşağıdaki ana başlıkları kapsamaktadır:
 
-## 7. Kullanici (Musteri) Paneli Ozellikleri
+Web sitesi arayüz tasarımı
 
-### 7.1 Uyelik ve Giris Sistemi
+Kullanıcı kayıt ve giriş sistemi
 
-- Kullanici kaydi
-- E-posta ve sifre ile giris
-- Oturum kapatma islemi
+Ürün listeleme ve ürün detay sayfaları
 
-### 7.2 Ana Sayfa
+Sepet ve sipariş işlemleri
 
-- One cikan urunler
-- Yeni eklenen urunler
-- Kategorilere hizli yonlendirme
+Admin paneli oluşturulması
 
-### 7.3 Urun Kategorileri
+Veritabanı tasarımı
 
-- Kolye
-- Bileklik
-- Yuzuk
-- Kupe
-- Toka
-- Set urunler
+Güvenlik ve yetkilendirme mekanizmaları
 
-### 7.4 Urun Detay Sayfasi
+#5. Hedef Kitle
+Bu web sitesinin hedef kitlesi şu şekilde belirlenmiştir:
 
-- Urun gorselleri
-- Urun adi ve aciklamasi
-- Fiyat bilgisi
-- Stok durumu
-- Sepete ekleme islemi
+Takı ve aksesuar kullanmayı seven kadın kullanıcılar
 
-### 7.5 Sepet ve Siparis
+Erkek aksesuarlarıyla ilgilenen kullanıcılar
 
-- Sepette urun goruntuleme
-- Urun adet artirma ve azaltma
-- Sepetten urun silme
-- Siparis olusturma
-- Siparis detaylarini goruntuleme
+Doğum günü, sevgililer günü, yıl dönümü gibi özel günler için hediye arayan kişiler
 
-### 7.6 Siparis Gecmisi
+Online alışverişi tercih eden kullanıcılar
 
-- Onceki siparisleri listeleme
-- Siparis durumunu takip etme
+#6. Web Sitesi Genel Özellikleri
+Mobil, tablet ve masaüstü cihazlarla uyumlu tasarım
 
-### 7.7 Iletisim Sayfasi
+Kullanıcı dostu arayüz
 
-- Iletisim bilgileri
-- Sosyal medya ve magaza tanitim alani icin uygun yapi
+Görsel ağırlıklı modern ürün sunumu
 
-## 8. Admin (Yonetici) Paneli Ozellikleri
+Hızlı sayfa geçişleri ve basit menü yapısı
 
-### 8.1 Admin Giris Sistemi
+Güvenli giriş ve yetkilendirme altyapısı
 
-- Yetkilendirilmis admin girisi
-- Rol bazli erisim kontrolu
+Ürün listeleme, kategori bazlı gezinti ve detay sayfaları
 
-### 8.2 Urun Yonetimi
+#7. Kullanıcı (Müşteri) Paneli Özellikleri
+#7.1 Üyelik ve Giriş Sistemi
+Kullanıcı kaydı
 
-- Yeni urun ekleme
-- Urun guncelleme
-- Urun silme
-- Urun gorseli ekleme
+E-posta ve şifre ile giriş
 
-### 8.3 Kategori Yonetimi
+Oturum kapatma işlemi
 
-- Kategori ekleme
-- Kategori guncelleme
-- Kategori silme
+#7.2 Ana Sayfa
+Öne çıkan ürünler
 
-### 8.4 Siparis Yonetimi
+Yeni eklenen ürünler
 
-- Tum siparisleri goruntuleme
-- Siparis detayini inceleme
-- Siparis durumu guncelleme
+Kategorilere hızlı yönlendirme
 
-### 8.5 Stok Yonetimi
+#7.3 Ürün Kategorileri
+Kolye
 
-- Urun stok bilgisini takip etme
-- Siparis olustugunda stok dusurme
+Bileklik
 
-### 8.6 Kullanici Yonetimi
+Yüzük
 
-- Rol bazli yonetim altyapisi bulunmaktadir
-- Sistem, kullanici bazli siparis ve sepet iliskilerini desteklemektedir
+Küpe
 
-## 9. Veritabani Tasarimi
-Projede SQL Server ve Entity Framework Core kullanilmaktadir. Temel tablolar/siniflar su yapidadir:
+Toka
 
-- Kullanicilar
-- Kategoriler
-- Urunler
-- Sepetler
-- Sepet urunleri
-- Siparisler
-- Siparis urunleri
+Set ürünler
 
-## 10. Guvenlik Onlemleri
+#7.4 Ürün Detay Sayfası
+Ürün görselleri
 
-- ASP.NET Core Identity ile kimlik dogrulama
-- Admin ve kullanici icin yetkilendirme kontrolu
-- E-posta bazli benzersiz kullanici kaydi
-- HTTPS yonlendirmesi
-- Verilerin iliskisel ve kontrollu bicimde saklanmasi
+Ürün adı ve açıklaması
 
-## 11. Performans ve Kullanilabilirlik
+Fiyat bilgisi
 
-- Optimize urun listeleme yapisi
-- Basit ve anlasilir sayfa akisi
-- Gorsel destekli urun sunumu
-- Mobil uyumlulugu destekleyen arayuz yapisi
+Stok durumu
 
-## 12. Projenin Saglayacagi Faydalar
+Sepete ekleme işlemi
 
-- Isletme icin daha genis musteri kitlesine ulasma
-- Satislarin dijital kanaldan artirilmasi
-- Marka gucunun dijital ortamda desteklenmesi
-- Zaman ve maliyet tasarrufu
-- Urun, siparis ve kategori yonetiminde kolaylik
+#7.5 Sepet ve Sipariş
+Sepette ürün görüntüleme
 
-## 13. Kullanilan Teknolojiler
+Ürün adet artırma ve azaltma
 
-- ASP.NET Core MVC
-- Entity Framework Core
-- SQL Server
-- ASP.NET Core Identity
-- Razor View yapisi
-- Bootstrap ve ozel CSS
+Sepetten ürün silme
 
-## 14. Mevcut Kod Tabaninda Bulunan Moduller
-Bu repository icinde su moduller aktif olarak yer almaktadir:
+Sipariş oluşturma
 
-- Kullanici kayit ve giris islemleri
-- Urun listeleme ve urun detay sayfalari
-- Kategori bazli urun gezintisi
-- Sepet islemleri
-- Siparis olusturma ve siparis gecmisi
-- Admin urun yonetimi
-- Admin kategori yonetimi
-- Admin siparis yonetimi
-- Iletisim sayfasi
+Sipariş detaylarını görüntüleme
 
-## 15. Calistirma Bilgisi
+#7.6 Sipariş Geçmişi
+Önceki siparişleri listeleme
 
-Uygulama varsayilan olarak SQL Server LocalDB baglantisi ile calisacak sekilde ayarlanmistir.
+Sipariş durumunu takip etme
 
-Ornek baglanti:
+#7.7 İletişim Sayfası
+İletişim bilgileri
 
-```json
+Sosyal medya ve mağaza tanıtım alanı için uygun yapı
+
+İşletmeye doğrudan mesaj gönderme formu
+
+#8. Admin (Yönetici) Paneli Özellikleri
+#8.1 Admin Giriş Sistemi
+Yetkilendirilmiş admin girişi
+
+Rol bazlı erişim kontrolü
+
+#8.2 Ürün Yönetimi
+Yeni ürün ekleme
+
+Ürün güncelleme
+
+Ürün silme
+
+Ürün görseli ekleme
+
+#8.3 Kategori Yönetimi
+Kategori ekleme
+
+Kategori güncelleme
+
+Kategori silme
+
+#8.4 Sipariş Yönetimi
+Tüm siparişleri görüntüleme
+
+Sipariş detayını inceleme
+
+Sipariş durumu güncelleme
+
+#8.5 Stok Yönetimi
+Ürün stok bilgisini takip etme
+
+Sipariş oluştuğunda stok düşürme
+
+#8.6 Kullanıcı Yönetimi
+Rol bazlı yönetim altyapısı bulunmaktadır
+
+Sistem, kullanıcı bazlı sipariş ve sepet ilişkilerini desteklemektedir
+
+#8.7 İletişim Mesajları Yönetimi
+Kullanıcılardan iletişim formu aracılığıyla gelen mesajların listelenmesi ve okunması
+
+#9. Veritabanı Tasarımı
+Projede SQL Server ve Entity Framework Core kullanılmaktadır. Temel tablolar/sınıflar şu yapıdadır:
+
+Kullanıcılar (ApplicationUser)
+
+Kategoriler (Category)
+
+Ürünler (Product)
+
+Sepetler (Cart)
+
+Sepet Ürünleri (CartItem)
+
+Siparişler (Order)
+
+Sipariş Ürünleri (OrderItem)
+
+İletişim Mesajları (ContactMessage)
+
+#10. Güvenlik Önlemleri
+ASP.NET Core Identity ile kimlik doğrulama
+
+Admin ve kullanıcı için yetkilendirme (Authorization) kontrolü
+
+E-posta bazlı benzersiz kullanıcı kaydı
+
+HTTPS yönlendirmesi
+
+Verilerin ilişkisel ve kontrollü biçimde (Cascade/Restrict) saklanması
+
+Anti-Forgery token ile CSRF koruması
+
+#11. Performans ve Kullanılabilirlik
+Optimize ürün listeleme yapısı
+
+Basit ve anlaşılır sayfa akışı
+
+Görsel destekli ürün sunumu
+
+Mobil uyumluluğu destekleyen arayüz yapısı
+
+#12. Projenin Sağlayacağı Faydalar
+İşletme için daha geniş müşteri kitlesine ulaşma
+
+Satışların dijital kanaldan artırılması
+
+Marka gücünün dijital ortamda desteklenmesi
+
+Zaman ve maliyet tasarrufu
+
+Ürün, sipariş ve kategori yönetiminde kolaylık
+
+#13. Kullanılan Teknolojiler
+ASP.NET Core MVC (.NET 8/9)
+
+Entity Framework Core
+
+SQL Server
+
+ASP.NET Core Identity
+
+Razor View yapısı
+
+Bootstrap ve özel CSS
+
+#14. Mevcut Kod Tabanında Bulunan Modüller
+Bu repository içinde şu modüller aktif olarak yer almaktadır:
+
+Kullanıcı kayıt ve giriş işlemleri
+
+Ürün listeleme ve ürün detay sayfaları
+
+Kategori bazlı (Guid altyapılı) ürün gezintisi
+
+Sepet işlemleri
+
+Sipariş oluşturma ve sipariş geçmişi
+
+Admin ürün yönetimi
+
+Admin kategori yönetimi
+
+Admin sipariş yönetimi
+
+Admin gelen kutusu (İletişim formları)
+
+İletişim sayfası
+
+#15. Çalıştırma Bilgisi
+Uygulama varsayılan olarak SQL Server LocalDB bağlantısı ile çalışacak şekilde ayarlanmıştır.
+
+Örnek bağlantı dizesi (Connection String):
+
+JSON
 "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TakiciECommerceDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
-```
+Genel çalıştırma adımları:
 
-Genel calistirma adimlari:
+Veritabanı bağlantısını src/Web/appsettings.json dosyasında kontrol edin.
 
-1. Veritabani baglantisini `src/Web/appsettings.json` dosyasinda kontrol edin.
-2. Cozumu Visual Studio veya `dotnet` ile acin.
-3. Migration ve veritabani olusturma islemlerini uygulayin.
-4. Uygulamayi baslatip kullanici ve admin akislarini test edin.
+Çözümü Visual Studio veya terminal üzerinden (dotnet build) açın.
 
-## 16. Sonuc
-TakiciECommerce projesi, bir taki isletmesinin urunlerini dijital ortamda sergileyebilmesi ve satabilmesi icin gelistirilmis modern bir web uygulamasidir. Proje; kullanici deneyimi, yonetilebilirlik, guvenlik ve islevsellik odakli bir yapi sunarak hem musterilere hem de isletme yonetimine pratik bir cozum saglamayi amaclamaktadir.
+Migration ve veritabanı oluşturma işlemlerini (dotnet ef database update) uygulayın.
+
+Projeyi başlatıp (dotnet run) kullanıcı ve admin akışlarını test edin.
