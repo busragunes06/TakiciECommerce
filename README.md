@@ -1,172 +1,283 @@
 #Takıcı E-Commerce
 
+
 #1. Giriş
 Günümüzde internetin yaygınlaşmasıyla ticaret anlayışı dijital ortama taşınmıştır. Bu proje kapsamında, bir takı işletmesi için kullanıcı dostu, güvenli, modern ve işlevsel bir e-ticaret web sitesi geliştirilmesi hedeflenmektedir.
 
 Hazırlanan web sitesi sayesinde müşteriler mağazaya gitmeden ürünleri inceleyebilecek, sepetlerine ekleyebilecek, sipariş verebilecek ve işletme ile kolayca iletişime geçebilecektir.
 
+
+
 #2. Proje Tanımı
 Bu proje; kolye, yüzük, bileklik, küpe ve benzeri takı ile aksesuar ürünlerinin internet üzerinden satışını gerçekleştirmek amacıyla tasarlanmış bir web uygulamasıdır.
 
+
+
 Sistem iki temel bölümden oluşmaktadır:
+
 
 Kullanıcı (Müşteri) paneli
 
+
 Yönetici (Admin) paneli
 
+
 Kullanıcılar ürünleri görüntüleyip satın alma sürecini yönetirken, yöneticiler ürün, kategori, sipariş ve stok işlemlerini kontrol edebilmektedir.
+
+
+
 
 #3. Projenin Amacı
 Projenin temel amacı; modern, güvenli ve yönetilebilir bir takı e-ticaret platformu oluşturarak müşteri memnuniyetini artırmak ve işletmenin satış sürecini dijital ortama taşımaktır.
 
+
+
 Bu kapsamda hedeflenen başlıca kazanımlar şunlardır:
+
 
 Takı ürünlerinin online ortamda satışa sunulması
 
+
 İşletmenin satış potansiyelinin artırılması
+
 
 Müşterilere 7/24 erişilebilir satış imkanı sağlanması
 
+
 Marka bilinirliğinin güçlendirilmesi
 
+
 Sipariş ve stok süreçlerinin kolaylaştırılması
+
+
 
 #4. Projenin Kapsamı
 Proje aşağıdaki ana başlıkları kapsamaktadır:
 
+
 Web sitesi arayüz tasarımı
+
 
 Kullanıcı kayıt ve giriş sistemi
 
+
 Ürün listeleme ve ürün detay sayfaları
+
 
 Sepet ve sipariş işlemleri
 
+
 Admin paneli oluşturulması
+
 
 Veritabanı tasarımı
 
+
 Güvenlik ve yetkilendirme mekanizmaları
+
+
 
 #5. Hedef Kitle
 Bu web sitesinin hedef kitlesi şu şekilde belirlenmiştir:
 
+
 Takı ve aksesuar kullanmayı seven kadın kullanıcılar
+
 
 Erkek aksesuarlarıyla ilgilenen kullanıcılar
 
+
 Doğum günü, sevgililer günü, yıl dönümü gibi özel günler için hediye arayan kişiler
 
+
 Online alışverişi tercih eden kullanıcılar
+
 
 #6. Web Sitesi Genel Özellikleri
 Mobil, tablet ve masaüstü cihazlarla uyumlu tasarım
 
+
+
 Kullanıcı dostu arayüz
+
 
 Görsel ağırlıklı modern ürün sunumu
 
+
 Hızlı sayfa geçişleri ve basit menü yapısı
+
 
 Güvenli giriş ve yetkilendirme altyapısı
 
+
 Ürün listeleme, kategori bazlı gezinti ve detay sayfaları
+
+
+
 
 #7. Kullanıcı (Müşteri) Paneli Özellikleri
 #7.1 Üyelik ve Giriş Sistemi
 Kullanıcı kaydı
 
+
 E-posta ve şifre ile giriş
 
+
 Oturum kapatma işlemi
+
+
+
 
 #7.2 Ana Sayfa
 Öne çıkan ürünler
 
+
 Yeni eklenen ürünler
 
+
 Kategorilere hızlı yönlendirme
+
+
+
 
 #7.3 Ürün Kategorileri
 Kolye
 
+
 Bileklik
+
 
 Yüzük
 
+
 Küpe
+
 
 Toka
 
+
 Set ürünler
+
+
+
 
 #7.4 Ürün Detay Sayfası
 Ürün görselleri
 
+
 Ürün adı ve açıklaması
+
 
 Fiyat bilgisi
 
+
 Stok durumu
 
+
 Sepete ekleme işlemi
+
+
+
+
 
 #7.5 Sepet ve Sipariş
 Sepette ürün görüntüleme
 
+
 Ürün adet artırma ve azaltma
+
 
 Sepetten ürün silme
 
+
 Sipariş oluşturma
 
+
 Sipariş detaylarını görüntüleme
+
+
+
 
 #7.6 Sipariş Geçmişi
 Önceki siparişleri listeleme
 
+
 Sipariş durumunu takip etme
+
+
+
 
 #7.7 İletişim Sayfası
 İletişim bilgileri
 
+
 Sosyal medya ve mağaza tanıtım alanı için uygun yapı
 
+
 İşletmeye doğrudan mesaj gönderme formu
+
+
+
 
 #8. Admin (Yönetici) Paneli Özellikleri
 #8.1 Admin Giriş Sistemi
 Yetkilendirilmiş admin girişi
 
+
 Rol bazlı erişim kontrolü
+
+
+
 
 #8.2 Ürün Yönetimi
 Yeni ürün ekleme
 
+
 Ürün güncelleme
+
 
 Ürün silme
 
+
 Ürün görseli ekleme
+
+
+
 
 #8.3 Kategori Yönetimi
 Kategori ekleme
 
+
 Kategori güncelleme
 
+
 Kategori silme
+
+
+
 
 #8.4 Sipariş Yönetimi
 Tüm siparişleri görüntüleme
 
+
 Sipariş detayını inceleme
 
+
 Sipariş durumu güncelleme
+
+
+
+
 
 #8.5 Stok Yönetimi
 Ürün stok bilgisini takip etme
 
+
 Sipariş oluştuğunda stok düşürme
+
+
+
+
 
 #8.6 Kullanıcı Yönetimi
 Rol bazlı yönetim altyapısı bulunmaktadır
