@@ -1,0 +1,38 @@
+@model IReadOnlyList<Web.ViewModels.Catalog.CategoryListItemVm>
+
+@{
+    ViewData["Title"] = "Kategoriler";
+}
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <div class="text-muted small">Kolye, yüzük, bileklik… tüm kategoriler.</div>
+    </div>
+    <a class="btn btn-outline-primary" asp-controller="Products" asp-action="Index">Tüm Ürünler</a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-light border">Henüz kategori yok.</div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var c in Model)
+        {
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a class="text-decoration-none" asp-controller="Categories" asp-action="Details" asp-route-id="@c.Id">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start justify-content-between gap-2">
+                                <h5 class="mb-1">@c.Name</h5>
+                                <span class="badge text-bg-light border">@c.ProductCount</span>
+                            </div>
+                            </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}

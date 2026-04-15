@@ -1,0 +1,103 @@
+@model Web.ViewModels.Catalog.ProductListVm
+
+@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<div class="fade-in">
+    <div class="text-center mb-5">
+        <h2 class="page-title">Işıltılı Koleksiyonumuz</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Her tarza ve özel anınıza eşlik edecek, özenle seçilmiş takılarımızı keşfedin.</p>
+    </div>
+
+    <div class="glass-box p-4 mb-5 mx-auto" style="max-width: 900px;">
+        <form method="get" class="row g-3 align-items-end">
+            
+            @if (Model.CategoryId.HasValue)
+            {
+                <input type="hidden" name="categoryId" value="@Model.CategoryId" />
+            }
+
+            <div class="col-md-7">
+                <label class="form-label text-muted small text-uppercase">Ara</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                    <input class="form-control border-start-0 ps-0" name="q" value="@Model.Query" placeholder="Ürün adı veya açıklama" />
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <label class="form-label text-muted small text-uppercase">Sırala</label>
+                <select class="form-select" name="sort">
+                    <option value="" selected="@(string.IsNullOrWhiteSpace(Model.Sort))">İsim (A-Z)</option>
+                    <option value="newest" selected="@(Model.Sort == "newest")">En Yeni Gelenler</option>
+                    <option value="price_asc" selected="@(Model.Sort == "price_asc")">Fiyat (Artan)</option>
+                    <option value="price_desc" selected="@(Model.Sort == "price_desc")">Fiyat (Azalan)</option>
+                </select>
+            </div>
+            
+            <div class="col-md-2 d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Filtrele</button>
+            </div>
+            
+            @if(!string.IsNullOrWhiteSpace(Model.Query) || Model.CategoryId.HasValue || !string.IsNullOrWhiteSpace(Model.Sort)) {
+                <div class="col-12 mt-2 text-end">
+                    <a class="text-decoration-none text-muted small" asp-controller="Products" asp-action="Index"><i class="fa-solid fa-xmark me-1"></i>Temizle</a>
+                </div>
+            }
+        </form>
+    </div>
+
+    @if (Model.Items.Count == 0)
+    {
+        <div class="text-center py-5 slide-up">
+            <i class="fa-regular fa-face-frown fs-1 text-muted mb-3"></i>
+            <h4 class="text-muted fw-normal">Maalesef aradığınız kriterlere uygun ürün bulamadık.</h4>
+            <a class="btn btn-outline-primary mt-3 rounded-pill" asp-controller="Products" asp-action="Index">Tüm Ürünleri Gör</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4 slide-up" style="animation-delay: 0.2s;">
+            @foreach (var p in Model.Items)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card h-100">
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-decoration-none">
+                            <div class="product-img-wrap">
+                                @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                                {
+                                    <img src="@p.ImageUrl" alt="@p.Name" />
+                                }
+                                else
+                                {
+                                    <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted" style="background:#fcfbfb;">
+                                        <i class="fa-solid fa-image fs-1 opacity-25"></i>
+                                    </div>
+                                }
+                            </div>
+                        </a>
+                        <div class="product-details">
+                            
+                            <div class="text-muted small mb-1 text-uppercase letter-spacing-1">
+                                @p.CategoryName
+                            </div>
+                            
+                            <h3 class="product-title brand-font"><a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-dark text-decoration-none">@p.Name</a></h3>
+                            <div class="product-price mt-auto pt-2">@p.Price.ToString("C")</div>
+                            
+                            @if(p.StockQuantity <= 0)
+                            {
+                                <div class="text-danger small mt-2 fw-medium">Geçici Süreliğine Tükendi</div>
+                            }
+                            
+                            <div class="product-actions mt-3">
+                                <a class="btn btn-outline-primary w-100 rounded-pill" asp-controller="Products" asp-action="Details" asp-route-id="@p.Id">Ürünü İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

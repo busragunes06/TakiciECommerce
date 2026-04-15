@@ -1,0 +1,63 @@
+@model Web.ViewModels.Account.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="row justify-content-center align-items-center fade-in py-5" style="min-height: 60vh;">
+    <div class="col-md-5 col-lg-4">
+        <div class="glass-box p-5 text-center">
+            
+            <i class="fa-regular fa-star text-primary fs-1 mb-3"></i>
+            <h2 class="brand-font mb-4">Aramıza Katılın</h2>
+            <p class="text-muted small mb-4">Sadece üyelerimize özel fırsatlar ve en yeni koleksiyonlara erişmek için kayıt olun.</p>
+
+            <form asp-action="Register" method="post" class="text-start">
+                <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label text-muted small text-uppercase letter-spacing-1">E-Posta Adresi</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-regular fa-envelope"></i></span>
+                        <input asp-for="Email" class="form-control border-start-0 ps-0" autocomplete="email" placeholder="ornek@mail.com" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label text-muted small text-uppercase letter-spacing-1">Şifre Belirleyin</label>
+                    <div class="input-group">
+                         <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-lock text-muted" style="font-size: 0.9em;"></i></span>
+                        <input asp-for="Password" type="password" class="form-control border-start-0 ps-0" autocomplete="new-password" placeholder="••••••••" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ConfirmPassword" class="form-label text-muted small text-uppercase letter-spacing-1">Şifreyi Doğrulayın</label>
+                    <div class="input-group">
+                         <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-lock text-muted" style="font-size: 0.9em;"></i></span>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control border-start-0 ps-0" autocomplete="new-password" placeholder="••••••••" />
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger small mt-1 d-block"></span>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input type="checkbox" class="form-check-input" id="terms" required />
+                    <label for="terms" class="form-check-label text-muted small" style="line-height:1.2;">İletişim izinlerini, gizlilik ve üyelik sözleşmesini onaylıyorum.</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-medium mb-4">Kayıt Ol</button>
+            </form>
+
+            <div class="text-muted small">
+                Zaten hesabınız var mı?
+                <a asp-controller="Account" asp-action="Login" class="text-primary fw-medium text-decoration-none">Giriş Yap</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

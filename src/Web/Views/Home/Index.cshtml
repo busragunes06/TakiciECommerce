@@ -1,0 +1,139 @@
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+@model Web.ViewModels.Home.HomeIndexVm
+
+<!-- Hero Section -->
+<section class="hero-section text-center fade-in">
+    <div class="hero-content glass-box p-5 mx-3 mx-md-0">
+        <h1 class="hero-title">Işıltınızı<br>Keşfedin</h1>
+        <p class="hero-subtitle">En yeni koleksiyonlarımızla zarafeti her anınızda hissedin. Özel tasarım kolyeler, yüzükler ve daha fazlası.</p>
+        <a asp-controller="Products" asp-action="Index" class="btn btn-primary btn-lg px-5 rounded-pill">Alışverişe Başla</a>
+    </div>
+</section>
+
+<!-- Hızlı Kategoriler -->
+<section class="mb-5 slide-up" style="animation-delay: 0.2s;">
+    <h2 class="page-title">Koleksiyonlar</h2>
+    <div class="row g-4 text-center justify-content-center">
+        <div class="col-6 col-md-3 col-lg-2">
+            <a href="/urunler?category=kolye" class="text-decoration-none">
+                <div class="rounded-circle bg-white shadow-sm mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; border: 2px solid var(--color-border); transition: 0.3s;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
+                    <i class="fa-solid fa-gem text-primary fs-1"></i>
+                </div>
+                <h5 class="text-dark fw-normal font-family-inter">Kolyeler</h5>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a href="/urunler?category=yuzuk" class="text-decoration-none">
+                <div class="rounded-circle bg-white shadow-sm mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; border: 2px solid var(--color-border); transition: 0.3s;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
+                    <i class="fa-solid fa-ring text-primary fs-1"></i>
+                </div>
+                <h5 class="text-dark fw-normal font-family-inter">Yüzükler</h5>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a href="/urunler?category=kupe" class="text-decoration-none">
+                <div class="rounded-circle bg-white shadow-sm mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; border: 2px solid var(--color-border); transition: 0.3s;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
+                    <i class="fa-solid fa-cube text-primary fs-1"></i>
+                </div>
+                <h5 class="text-dark fw-normal font-family-inter">Küpeler</h5>
+            </a>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+            <a href="/urunler?category=bileklik" class="text-decoration-none">
+                <div class="rounded-circle bg-white shadow-sm mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; border: 2px solid var(--color-border); transition: 0.3s;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
+                    <i class="fa-solid fa-link text-primary fs-1"></i>
+                </div>
+                <h5 class="text-dark fw-normal font-family-inter">Bileklikler</h5>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Öne Çıkanlar -->
+<section class="mb-5 slide-up" style="animation-delay: 0.4s;">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h2 class="brand-font fs-2 mb-0">Öne Çıkanlar</h2>
+        <a class="text-primary text-decoration-none fw-medium" asp-controller="Products" asp-action="Index">Tüm ürünler <i class="fa-solid fa-arrow-right ms-1"></i></a>
+    </div>
+
+    @if (Model.Featured.Count == 0)
+    {
+        <div class="alert alert-light border text-center text-muted py-5">Henüz öne çıkan ürün bulunmamaktadır.</div>
+    }
+    else
+    {
+        <div class="row g-4 mb-4">
+            @foreach (var p in Model.Featured)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-decoration-none">
+                            <div class="product-img-wrap">
+                                @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                                {
+                                    <img src="@p.ImageUrl" alt="@p.Name" />
+                                }
+                                else
+                                {
+                                    <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted" style="background:#f9f9f9;">Görsel Yok</div>
+                                }
+                            </div>
+                        </a>
+                        <div class="product-details">
+                            <div class="text-muted small mb-1 text-uppercase letter-spacing-1">@p.CategoryName</div>
+                            <h3 class="product-title brand-font"><a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-dark text-decoration-none">@p.Name</a></h3>
+                            <div class="product-price">@p.Price.ToString("C")</div>
+                            <div class="product-actions mt-2">
+                                <a class="btn btn-outline-primary w-100 rounded-pill" asp-controller="Products" asp-action="Details" asp-route-id="@p.Id">Detayları Gör</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>
+
+<!-- Yeni Eklenenler -->
+<section class="mb-5 slide-up" style="animation-delay: 0.6s;">
+    <h2 class="brand-font fs-2 mb-4 text-center">Yeni Gelenler</h2>
+    @if (Model.Newest.Count == 0)
+    {
+        <div class="alert alert-light border text-center text-muted py-5">Henüz yeni eklenen ürün yok.</div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var p in Model.Newest)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-decoration-none">
+                            <div class="product-img-wrap">
+                            @if (!string.IsNullOrWhiteSpace(p.ImageUrl))
+                            {
+                                    <img src="@p.ImageUrl" alt="@p.Name" />
+                            }
+                            else
+                            {
+                                    <div class="w-100 h-100 d-flex align-items-center justify-content-center text-muted" style="background:#f9f9f9;">Görsel Yok</div>
+                            }
+                            </div>
+                        </a>
+                        <div class="product-details">
+                            <div class="text-muted small mb-1 text-uppercase letter-spacing-1">@p.CategoryName</div>
+                            <h3 class="product-title brand-font"><a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" class="text-dark text-decoration-none">@p.Name</a></h3>
+                            <div class="product-price">@p.Price.ToString("C")</div>
+                            <div class="product-actions mt-2">
+                                <a class="btn btn-outline-primary w-100 rounded-pill" asp-controller="Products" asp-action="Details" asp-route-id="@p.Id">Detayları Gör</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>

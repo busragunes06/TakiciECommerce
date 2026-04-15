@@ -1,0 +1,71 @@
+@model IEnumerable<Web.ViewModels.Admin.AdminUserListItemVm>
+@{
+    ViewData["Title"] = "Musteriler";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <h1 class="h2">Musteriler</h1>
+    <div class="text-muted">Kayitli kullanicilar ve siparis ozetleri</div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>E-posta</th>
+                        <th>Telefon</th>
+                        <th>Rol</th>
+                        <th>Siparis</th>
+                        <th>Toplam Harcama</th>
+                        <th>Son Siparis</th>
+                        <th class="text-end">Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                <div class="fw-semibold">@user.Email</div>
+                                @if (user.EmailConfirmed)
+                                {
+                                    <span class="badge bg-success-subtle text-success-emphasis">Dogrulandi</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning-subtle text-warning-emphasis">Bekliyor</span>
+                                }
+                            </td>
+                            <td>@(string.IsNullOrWhiteSpace(user.PhoneNumber) ? "-" : user.PhoneNumber)</td>
+                            <td>
+                                @if (user.IsAdmin)
+                                {
+                                    <span class="badge bg-dark">Admin</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Musteri</span>
+                                }
+                            </td>
+                            <td>@user.OrderCount</td>
+                            <td>@user.TotalSpent.ToString("C")</td>
+                            <td>@(user.LastOrderUtc.HasValue ? user.LastOrderUtc.Value.AddHours(3).ToString("dd.MM.yyyy HH:mm") : "-")</td>
+                            <td class="text-end">
+                                <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-sm btn-outline-primary">Detay</a>
+                            </td>
+                        </tr>
+                    }
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-4 text-muted">Kayitli kullanici bulunmamaktadir.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

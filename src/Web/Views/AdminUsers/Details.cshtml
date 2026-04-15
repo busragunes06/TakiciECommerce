@@ -1,0 +1,71 @@
+@model Web.ViewModels.Admin.AdminUserDetailsVm
+@{
+    ViewData["Title"] = "Musteri Detayi";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <h1 class="h2">Musteri Detayi</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Listeye Don</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card shadow-sm border-0 h-100">
+            <div class="card-body">
+                <h5 class="card-title mb-3">@Model.Email</h5>
+                <p class="mb-2"><strong>Kullanici Adi:</strong> @(string.IsNullOrWhiteSpace(Model.UserName) ? "-" : Model.UserName)</p>
+                <p class="mb-2"><strong>Telefon:</strong> @(string.IsNullOrWhiteSpace(Model.PhoneNumber) ? "-" : Model.PhoneNumber)</p>
+                <p class="mb-2"><strong>Rol:</strong> @(Model.IsAdmin ? "Admin" : "Musteri")</p>
+                <p class="mb-2"><strong>E-posta Durumu:</strong> @(Model.EmailConfirmed ? "Dogrulandi" : "Bekliyor")</p>
+                <p class="mb-2"><strong>Toplam Siparis:</strong> @Model.OrderCount</p>
+                <p class="mb-2"><strong>Toplam Harcama:</strong> @Model.TotalSpent.ToString("C")</p>
+                <p class="mb-0"><strong>Son Siparis:</strong> @(Model.LastOrderUtc.HasValue ? Model.LastOrderUtc.Value.AddHours(3).ToString("dd.MM.yyyy HH:mm") : "-")</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white fw-semibold">Kullanicinin Siparisleri</div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Siparis No</th>
+                                <th>Tarih</th>
+                                <th>Adet</th>
+                                <th>Tutar</th>
+                                <th>Durum</th>
+                                <th class="text-end">Islem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model.Orders)
+                            {
+                                <tr>
+                                    <td>#@order.Id.ToString().Substring(0, 8)</td>
+                                    <td>@order.CreatedAtUtc.AddHours(3).ToString("dd.MM.yyyy HH:mm")</td>
+                                    <td>@order.ItemCount</td>
+                                    <td>@order.TotalAmount.ToString("C")</td>
+                                    <td>@order.Status</td>
+                                    <td class="text-end">
+                                        <a asp-controller="AdminOrders" asp-action="Details" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary">Siparise Git</a>
+                                    </td>
+                                </tr>
+                            }
+                            @if (!Model.Orders.Any())
+                            {
+                                <tr>
+                                    <td colspan="6" class="text-center py-4 text-muted">Bu kullaniciya ait siparis bulunmamaktadir.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

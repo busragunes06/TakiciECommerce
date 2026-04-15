@@ -1,0 +1,29 @@
+@model Web.Models.Category
+@{
+    ViewData["Title"] = "Kategori Sil";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <h1 class="h2 text-danger">Kategori Sil</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">
+            <i class="fa-solid fa-arrow-left me-1"></i> Listeye Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="alert alert-danger shadow-sm border-0">
+            <h4 class="alert-heading"><i class="fa-solid fa-triangle-exclamation me-2"></i>Uyarı!</h4>
+            <p><strong>@Model.Name</strong> isimli kategoriyi silmek üzeresiniz. Bu işlem geri alınamaz.</p>
+            <hr>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash me-1"></i> Evet, Sil</button>
+                <a asp-action="Index" class="btn btn-secondary">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

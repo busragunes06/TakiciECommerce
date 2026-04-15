@@ -1,0 +1,98 @@
+@model Web.Models.Order
+@{
+    ViewData["Title"] = "Sipariş Detayı";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+    <h1 class="h2">Sipariş Detayı <span class="text-muted small">#@Model.Id.ToString().Substring(0, 8)</span></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a asp-action="Index" class="btn btn-sm btn-outline-secondary">
+            <i class="fa-solid fa-arrow-left me-1"></i> Listeye Dön
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white fw-bold py-3">
+                <i class="fa-solid fa-box-open me-2 text-primary"></i> Sipariş Edilen Ürünler
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th width="70">Görsel</th>
+                            <th>Ürün Adı</th>
+                            <th class="text-center">Adet</th>
+                            <th class="text-end">Birim Fiyat</th>
+                            <th class="text-end">Ara Toplam</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    @if(item.Product != null && !string.IsNullOrEmpty(item.Product.ImageUrl)) {
+                                        <img src="@item.Product.ImageUrl" class="img-thumbnail" style="width: 50px; height: 50px; object-fit: cover;" alt="@item.Product.Name" />
+                                    } else {
+                                        <div class="bg-light text-center text-muted d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                                            <i class="fa-solid fa-image"></i>
+                                        </div>
+                                    }
+                                </td>
+                                <td>@(item.Product?.Name ?? "Silinmiş Ürün")</td>
+                                <td class="text-center">@item.Quantity</td>
+                                <td class="text-end">@item.UnitPrice.ToString("C")</td>
+                                <td class="text-end fw-bold">@((item.Quantity * item.UnitPrice).ToString("C"))</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot class="table-light">
+                        <tr>
+                            <td colspan="4" class="text-end fw-bold">Genel Toplam:</td>
+                            <td class="text-end fw-bold text-primary fs-5">@Model.TotalAmount.ToString("C")</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white fw-bold py-3">
+                <i class="fa-solid fa-circle-info me-2 text-info"></i> Sipariş Bilgileri
+            </div>
+            <div class="card-body">
+                <p class="mb-2"><strong>Müşteri ID:</strong><br/> <span class="text-muted small">@Model.UserId</span></p>
+                <p class="mb-2"><strong>Alıcı Adı:</strong><br/> @Model.ContactName</p>
+                <p class="mb-2"><strong>Telefon:</strong><br/> @Model.PhoneNumber</p>
+                <p class="mb-2"><strong>Sipariş Tarihi:</strong><br/> @Model.CreatedAtUtc.AddHours(3).ToString("dd.MM.yyyy HH:mm")</p>
+                
+                <hr />
+                
+                <p class="mb-2"><strong><i class="fa-solid fa-truck text-muted me-1"></i> Teslimat Adresi:</strong><br/> <span class="text-muted small">@Model.ShippingAddress<br><strong>@Model.City</strong></span></p>
+                <p class="mb-2"><strong><i class="fa-solid fa-wallet text-muted me-1"></i> Ödeme Yöntemi:</strong><br/> <span class="badge bg-secondary">@Model.PaymentMethod</span></p>
+                
+                <hr />
+                
+                <form asp-action="UpdateStatus" method="post">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Sipariş Durumu</label>
+                        <select name="status" class="form-select border-primary">
+                            <option value="Hazirlaniyor" selected="@(Model.Status == "Hazirlaniyor")">Hazırlanıyor</option>
+                            <option value="Kargolandi" selected="@(Model.Status == "Kargolandi")">Kargolandı</option>
+                            <option value="Teslim Edildi" selected="@(Model.Status == "Teslim Edildi")">Teslim Edildi</option>
+                            <option value="Iptal Edildi" selected="@(Model.Status == "Iptal Edildi")">İptal Edildi</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-check-double me-1"></i> Durumu Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

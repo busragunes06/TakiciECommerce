@@ -1,0 +1,45 @@
+@model Web.ViewModels.Profile.ProfileIndexVm
+@{
+    ViewData["Title"] = "Hesabım";
+}
+
+<div class="container py-5 fade-in">
+    <div class="row fade-in">
+        <div class="col-md-4 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body text-center p-4">
+                    <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fa-regular fa-user fs-1 text-primary"></i>
+                    </div>
+                    <h4 class="brand-font">Hesabım</h4>
+                    <p class="text-muted mb-0">@Model.Email</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-body p-4">
+                    <h5 class="brand-font mb-4">Üyelik Bilgileri</h5>
+                    <div class="row mb-3">
+                        <div class="col-sm-3 text-muted">E-Posta:</div>
+                        <div class="col-sm-9 fw-medium">@Model.Email</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-sm-3 text-muted">Toplam Sipariş:</div>
+                        <div class="col-sm-9 fw-medium">@Model.TotalOrders adet</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="d-flex gap-3">
+                <a asp-controller="Orders" asp-action="Index" class="btn btn-outline-primary rounded-pill px-4">
+                    <i class="fa-solid fa-box me-2"></i> Siparişlerimi Gör
+                </a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary rounded-pill px-4">
+                    Alışverişe Devam Et
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

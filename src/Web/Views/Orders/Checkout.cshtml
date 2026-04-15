@@ -1,0 +1,126 @@
+@model Web.ViewModels.Checkout.CheckoutVm
+@{
+    ViewData["Title"] = "Teslimat ve Ödeme";
+}
+
+<div class="container mt-5">
+    <h2>Teslimat ve Ödeme Bilgileri</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Checkout" method="post">
+                <div class="mb-3">
+                    <label asp-for="ContactName" class="form-label"></label>
+                    <input asp-for="ContactName" class="form-control" placeholder="Adınız Soyadınız" />
+                    <span asp-validation-for="ContactName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="05XX XXX XX XX" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label"></label>
+                    <select asp-for="City" class="form-select">
+                        <option value="">Seçiniz...</option>
+                        <option value="İstanbul">İstanbul</option>
+                        <option value="Ankara">Ankara</option>
+                        <option value="İzmir">İzmir</option>
+                    </select>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ShippingAddress" class="form-label"></label>
+                    <textarea asp-for="ShippingAddress" class="form-control" rows="3" placeholder="Sokak, Mahalle, Bina No..."></textarea>
+                    <span asp-validation-for="ShippingAddress" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="PaymentMethod" class="form-label fw-bold"></label>
+                    <select asp-for="PaymentMethod" class="form-select" id="paymentMethodSelect">
+                        <option value="Kredi Kartı">Kredi Kartı</option>
+                        <option value="Kapıda Ödeme">Kapıda Ödeme</option>
+                        <option value="Havale/EFT">Havale/EFT</option>
+                    </select>
+                </div>
+
+                <div id="creditCardPanel" class="payment-panel p-4 border rounded bg-white shadow-sm mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fa-regular fa-credit-card me-2"></i>Kredi Kartı Bilgileri</h6>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Kart Üzerindeki İsim">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Kart Numarası (16 Hane)">
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="Ay / Yıl (AA/YY)">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" placeholder="CVC">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="eftPanel" class="payment-panel p-4 border rounded bg-white shadow-sm mb-4" style="display: none;">
+                    <h6 class="mb-3 text-primary"><i class="fa-solid fa-building-columns me-2"></i>Banka Hesap Bilgilerimiz</h6>
+                    <div class="alert alert-secondary small mb-0">
+                        <p class="mb-2">Lütfen ödemeyi aşağıdaki hesaba gönderirken açıklama kısmına <strong>Adınızı ve Soyadınızı</strong> yazmayı unutmayın.</p>
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>Banka:</strong> Ziraat Bankası</li>
+                            <li><strong>Alıcı:</strong> Takıcı E-Ticaret A.Ş.</li>
+                            <li><strong>IBAN:</strong> TR12 0001 0000 0000 0000 0000 00</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 py-2 fs-5">Siparişi Onayla ve Tamamla</button>
+            </form>
+        </div>
+        
+        <div class="col-md-6">
+             <div class="card bg-light p-4 mb-4 border-0 shadow-sm">
+                 <h4 class="mb-3">Sipariş Özeti</h4>
+                 <div class="d-flex justify-content-between mb-2 fs-5">
+                     <span class="text-muted">Ödenecek Toplam Tutar:</span>
+                     <span class="fw-bold text-primary">@Model.CartTotal.ToString("C")</span>
+                 </div>
+             </div>
+
+             <div class="card bg-light p-4 border-0 shadow-sm">
+                 <h4>Adım Adım Güvenli Alışveriş</h4>
+                 <p class="text-muted">Lütfen teslimat yapılacak adresi eksiksiz girdiğinizden emin olun.</p>
+             </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        $(document).ready(function () {
+            // Ödeme yöntemi değiştikçe çalışacak fonksiyon
+            $('#paymentMethodSelect').change(function () {
+                var selectedMethod = $(this).val();
+                
+                // Önce tüm panelleri yukarı doğru kaydırarak gizle
+                $('.payment-panel').slideUp(200); 
+
+                // Seçilen yönteme göre ilgili paneli aşağı doğru aç
+                if (selectedMethod === 'Kredi Kartı') {
+                    $('#creditCardPanel').delay(200).slideDown(300);
+                } 
+                else if (selectedMethod === 'Havale/EFT') {
+                    $('#eftPanel').delay(200).slideDown(300);
+                }
+            });
+
+            // Sayfa ilk yüklendiğinde doğru panelin açık gelmesi için tetikle
+            $('#paymentMethodSelect').trigger('change');
+        });
+    </script>
+}

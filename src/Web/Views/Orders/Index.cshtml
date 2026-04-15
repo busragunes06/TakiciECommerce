@@ -1,0 +1,49 @@
+@model IReadOnlyList<Web.ViewModels.Orders.OrderListItemVm>
+
+@{
+    ViewData["Title"] = "Siparişlerim";
+}
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <div>
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <div class="text-muted small">Geçmiş siparişlerini görüntüle.</div>
+    </div>
+    <a class="btn btn-outline-primary" asp-controller="Cart" asp-action="Index">Sepet</a>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-light border">Henüz siparişin yok.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Durum</th>
+                <th class="text-end">Toplam</th>
+                <th class="text-end">Ürün adedi</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var o in Model)
+            {
+                <tr>
+                    <td>@o.CreatedAtUtc.ToLocalTime().ToString("g")</td>
+                    <td><span class="badge text-bg-light border">@o.Status</span></td>
+                    <td class="text-end">@o.TotalAmount.ToString("C")</td>
+                    <td class="text-end">@o.ItemCount</td>
+                    <td class="text-end">
+                        <a class="btn btn-sm btn-outline-primary" asp-controller="Orders" asp-action="Details" asp-route-id="@o.Id">Detay</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}
+

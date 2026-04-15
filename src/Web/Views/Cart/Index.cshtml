@@ -1,0 +1,124 @@
+@model Web.ViewModels.Cart.CartVm
+
+@{
+    ViewData["Title"] = "Sepetim";
+}
+
+<div class="container fade-in py-5">
+    <div class="text-center mb-5">
+        <h2 class="page-title">Alışveriş Sepetiniz</h2>
+    </div>
+
+    @if (Model.Items.Count == 0)
+    {
+        <div class="glass-box text-center py-5 slide-up mx-auto" style="max-width: 600px;">
+            <div class="mb-4">
+                <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 100px; height: 100px;">
+                    <i class="fa-solid fa-basket-shopping fs-1 text-primary opacity-50"></i>
+                </div>
+            </div>
+            <h4 class="brand-font mb-3">Sepetiniz Şu An Boş</h4>
+            <p class="text-muted mb-4">Görünüşe göre sepetinize henüz göz alıcı bir takı eklemediniz.</p>
+            <a class="btn btn-primary rounded-pill px-5 py-2" asp-controller="Products" asp-action="Index">Koleksiyonu Keşfet</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-5 slide-up">
+            <div class="col-lg-8">
+                <div class="glass-box p-4 border-0">
+                    <div class="table-responsive">
+                        <table class="table table-borderless align-middle mb-0">
+                            <thead class="border-bottom text-muted small text-uppercase letter-spacing-1">
+                                <tr>
+                                    <th class="fw-medium pb-3">Ürün</th>
+                                    <th class="fw-medium pb-3 text-center" style="width: 130px;">Adet</th>
+                                    <th class="fw-medium pb-3 text-end">Tutar</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Items)
+                                {
+                                    <tr class="border-bottom">
+                                        <td class="py-4">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-light rounded d-flex align-items-center justify-content-center me-3" style="width:60px; height:60px;">
+                                                    <i class="fa-regular fa-gem text-muted"></i>
+                                                </div>
+                                                <div>
+                                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.ProductId" class="text-dark fw-semibold text-decoration-none">@item.ProductName</a>
+                                                    <div class="text-primary small mt-1">@item.UnitPrice.ToString("C")</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-center">
+                                            <div class="d-inline-flex align-items-center border rounded-pill px-2 py-1 bg-white">
+                                                <form asp-controller="Cart" asp-action="Decrease" method="post" class="m-0">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                                    <button class="btn btn-sm btn-link text-dark text-decoration-none p-0 px-2 border-0" type="submit"><i class="fa-solid fa-minus" style="font-size: 10px;"></i></button>
+                                                </form>
+                                                <span class="mx-2 fw-medium px-2">@item.Quantity</span>
+                                                <form asp-controller="Cart" asp-action="Increase" method="post" class="m-0">
+                                                    @Html.AntiForgeryToken()
+                                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                                    <button class="btn btn-sm btn-link text-dark text-decoration-none p-0 px-2 border-0" type="submit"><i class="fa-solid fa-plus" style="font-size: 10px;"></i></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 text-end fw-semibold text-dark">
+                                            @item.LineTotal.ToString("C")
+                                        </td>
+                                        <td class="py-4 text-end">
+                                            <form asp-controller="Cart" asp-action="Remove" method="post" class="m-0">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                <button class="btn btn-light btn-sm rounded-circle text-danger" title="Kaldır" type="submit" style="width:32px; height:32px;">
+                                                    <i class="fa-solid fa-trash-can"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a class="text-decoration-none text-muted" asp-controller="Products" asp-action="Index"><i class="fa-solid fa-arrow-left me-2"></i>Alışverişe Devam Et</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="glass-box p-4 border-0 sticky-top" style="top: 100px;">
+                    <h4 class="brand-font mb-4">Sipariş Özeti</h4>
+                    
+                    <div class="d-flex justify-content-between mb-3 text-muted">
+                        <span>Ara Toplam</span>
+                        <span>@Model.Total.ToString("C")</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3 text-muted">
+                        <span>Kargo</span>
+                        <span>Ücretsiz</span>
+                    </div>
+                    
+                    <hr class="my-4 border-secondary opacity-25">
+                    
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fw-semibold fs-5">Genel Toplam</span>
+                        <span class="fw-bold fs-4 text-primary">@Model.Total.ToString("C")</span>
+                    </div>
+
+                  <a asp-controller="Orders" asp-action="Checkout" class="btn btn-primary w-100 rounded-pill py-3 fw-medium text-uppercase letter-spacing-1 shadow">
+                     Ödemeye Geç <i class="fa-solid fa-arrow-right ms-2 small"></i>
+                </a>
+                    
+                    <div class="text-center mt-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Credit_card_logos.png" alt="Güvenli Ödeme" height="30" class="opacity-75 grayscale" style="filter: grayscale(100%);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
